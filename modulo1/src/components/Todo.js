@@ -9,7 +9,7 @@ const Todo = ({ title }) => (
 );
 
 Todo.defaultProps = {
-  title: "Todo padrão"
+  title: "Todo padrãos"
 };
 
 Todo.propTypes = {
