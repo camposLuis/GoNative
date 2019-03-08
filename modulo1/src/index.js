@@ -1,4 +1,5 @@
 import './config/reactotron';
+import './config/devtools';
 import React, { Component } from 'react';
 import {
   Platform, StyleSheet, Text, View, Button,
