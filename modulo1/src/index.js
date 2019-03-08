@@ -1,7 +1,8 @@
+import "./config/reactotron";
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View, Button } from "react-native";
-import Todo from "./components/Todo";
-import { hidden } from "ansi-colors";
+//import Todo from "./components/Todo";
+console.tron.log("Hello World");
 
 export default class App extends Component {
   /*state = {
