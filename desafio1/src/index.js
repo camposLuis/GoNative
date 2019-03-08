@@ -1,16 +1,13 @@
 import './config/reactotron';
 import './config/devtools';
-import React from 'react';
-import {
-  StyleSheet, Text, View, ScrollView,
-} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, View, ScrollView } from 'react-native';
+import Header from '~/components/Header.android';
+import User from '~/components/User.android';
+import Post from '~/components/Post.android';
 
 const bgColor = '#81e';
 const bgHeaderColor = '#FFF';
-const colorHeaderText = '#111';
-const colorPostText = '#222';
-const colorUsuarioText = '#555';
-const colorBorderUsuarioBox = '#81e';
 
 const styles = StyleSheet.create({
   container: {
@@ -24,89 +21,84 @@ const styles = StyleSheet.create({
     marginTop: 25,
     padding: 20,
   },
-  headerText: {
-    color: colorHeaderText,
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  postBox: {
-    marginTop: 15,
-    paddingTop: 0,
-  },
-  postText: {
-    color: colorPostText,
-    fontSize: 14,
-  },
-  usuarioBox: {
-    borderBottomWidth: 1,
-    borderColor: colorBorderUsuarioBox,
-    marginTop: 10,
-    paddingBottom: 20,
-  },
-  usuarioText: {
-    color: colorUsuarioText,
-    fontSize: 16,
-    fontStyle: 'italic',
-  },
 });
 
-const App = () => (
-  <View style={styles.container}>
-    <ScrollView>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Aprendendo React Native</Text>
-        <View style={styles.usuarioBox}>
-          <Text style={styles.usuarioText}>Luís Campos</Text>
-        </View>
-        <View style={styles.postBox}>
-          <Text style={styles.postText}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-            has been the industry's standard dummy text ever since the 1500s, when an unknown
-            printer took a galley of type and scrambled it to make a type specimen book.
-          </Text>
-        </View>
-      </View>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Aprendendo React Native</Text>
-        <View style={styles.usuarioBox}>
-          <Text style={styles.usuarioText}>Luís Campos</Text>
-        </View>
-        <View style={styles.postBox}>
-          <Text style={styles.postText}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-            has been the industry's standard dummy text ever since the 1500s, when an unknown
-            printer took a galley of type and scrambled it to make a type specimen book.
-          </Text>
-        </View>
-      </View>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Aprendendo React Native</Text>
-        <View style={styles.usuarioBox}>
-          <Text style={styles.usuarioText}>Luís Campos</Text>
-        </View>
-        <View style={styles.postBox}>
-          <Text style={styles.postText}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-            has been the industry's standard dummy text ever since the 1500s, when an unknown
-            printer took a galley of type and scrambled it to make a type specimen book.
-          </Text>
-        </View>
-      </View>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Aprendendo React Native</Text>
-        <View style={styles.usuarioBox}>
-          <Text style={styles.usuarioText}>Luís Campos</Text>
-        </View>
-        <View style={styles.postBox}>
-          <Text style={styles.postText}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-            has been the industry's standard dummy text ever since the 1500s, when an unknown
-            printer took a galley of type and scrambled it to make a type specimen book.
-          </Text>
-        </View>
-      </View>
-    </ScrollView>
-  </View>
-);
+export default class App extends Component {
+  state = {
+    post: [
+      {
+        id: Math.random(),
+        curso: 'Aprendendo React Native',
+        usuario: 'Luís Campos',
+        postText:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsumhas been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+      },
+      {
+        id: Math.random(),
+        curso: 'Aprendendo ReactJS',
+        usuario: 'Gabriel Petrovick',
+        postText:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsumhas been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+      },
+      {
+        id: Math.random(),
+        curso: 'Aprendendo NodeJS',
+        usuario: 'Guilherme Queiroz',
+        postText:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsumhas been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+      },
+      {
+        id: Math.random(),
+        curso: 'Aprendendo Angular',
+        usuario: 'Anderson Luís',
+        postText:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsumhas been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+      },
+      {
+        id: Math.random(),
+        curso: 'Aprendendo ECS6',
+        usuario: 'Mirim Camila',
+        postText:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsumhas been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+      },
+      {
+        id: Math.random(),
+        curso: 'Aprendendo FlexBox',
+        usuario: 'Mislene Dalila',
+        postText:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsumhas been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+      },
+      {
+        id: Math.random(),
+        curso: 'Aprendendo Redux',
+        usuario: 'Fernando Corrêa',
+        postText:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsumhas been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+      },
+      {
+        id: Math.random(),
+        curso: 'Aprendendo GraphQL',
+        usuario: 'José dos Reis',
+        postText:
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsumhas been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+      },
+    ],
+  };
 
-export default App;
+  render() {
+    const { post } = this.state;
+    return (
+      <View style={styles.container}>
+        <ScrollView>
+          {post.map(posts => (
+            <View style={styles.header} key={posts.id}>
+              <Header curso={posts.curso} />
+              <User usuario={posts.usuario} />
+              <Post postText={posts.postText} />
+            </View>
+          ))}
+        </ScrollView>
+      </View>
+    );
+  }
+}
