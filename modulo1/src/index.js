@@ -1,11 +1,13 @@
-import "./config/reactotron";
-import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View, Button } from "react-native";
-//import Todo from "./components/Todo";
-console.tron.log("Hello World");
+import './config/reactotron';
+import React, { Component } from 'react';
+import {
+  Platform, StyleSheet, Text, View, Button,
+} from 'react-native';
+// import Todo from "./components/Todo";
+console.tron.log('Hello World');
 
 export default class App extends Component {
-  /*state = {
+  /* state = {
     counter: 0,
     text: "",
     usuario: { id: 0, nome: "Luís" },
@@ -49,7 +51,7 @@ export default class App extends Component {
       </View>
     );
   }
-}*/
+} */
 
   render() {
     return (
@@ -70,22 +72,22 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#333",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    alignContent: "center"
+    backgroundColor: '#333',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    alignContent: 'center',
   },
 
   box: {
     width: 80,
     height: 80,
-    backgroundColor: "#F00",
+    backgroundColor: '#F00',
     margin: 10,
-    transform: [{ rotateZ: "20deg" }]
+    transform: [{ rotateZ: '20deg' }],
   },
 
   boxText: {
-    color: "#FFF"
-  }
+    color: '#FFF',
+  },
 });
