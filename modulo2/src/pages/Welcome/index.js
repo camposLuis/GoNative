@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import {
-  View, Text, TextInput, TouchableOpacity, StatusBar, AsyncStorage,
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StatusBar,
+  AsyncStorage,
+  ActivityIndicator,
 } from 'react-native';
 import api from '../../services/api';
 
@@ -9,6 +15,8 @@ import styles from './styles';
 export default class Welcome extends Component {
   state = {
     username: '',
+    loading: false,
+    error: false,
   };
 
   checkUserExist = async (username) => {
@@ -24,18 +32,20 @@ export default class Welcome extends Component {
     const { username } = this.state;
     const { navigation } = this.props;
 
+    this.setState({ loading: true });
+
     try {
       await this.checkUserExist(username);
       await this.saveUser(username);
 
       navigation.navigate('Repositories');
     } catch (err) {
-      console.tron.log('Usuário inexistente');
+      this.setState({ loading: false, error: true, username: '' });
     }
   };
 
   render() {
-    const { username } = this.state;
+    const { username, loading, error } = this.state;
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" backgroundColor="#7A91CA" />
@@ -43,6 +53,8 @@ export default class Welcome extends Component {
         <Text style={styles.text}>
           Para continuar precisamos que você informe seu usuário do GitHub.
         </Text>
+
+        {error && <Text style={styles.error}>Usuário inexistente</Text>}
 
         <View style={styles.form}>
           <TextInput
@@ -56,7 +68,11 @@ export default class Welcome extends Component {
           />
 
           <TouchableOpacity style={styles.button} onPress={this.singIn}>
-            <Text style={styles.buttonText}>Proceguir</Text>
+            {loading ? (
+              <ActivityIndicator size="small" color="#FFF" />
+            ) : (
+              <Text style={styles.buttonText}>Proceguir</Text>
+            )}
           </TouchableOpacity>
         </View>
       </View>
