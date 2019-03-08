@@ -13,6 +13,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: metrics.basePadding,
     paddingTop: 2,
   },
+  icon: {
+    color: colors.darker,
+  },
   title: {
     color: colors.darker,
     fontSize: 16,
