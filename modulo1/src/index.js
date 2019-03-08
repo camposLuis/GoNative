@@ -4,23 +4,21 @@ import React, { Component } from 'react';
 import {
   Platform, StyleSheet, Text, View, Button,
 } from 'react-native';
-// import Todo from "~/components/Todo";
+import Todo from '~/components/Todo';
+
 console.tron.log('Hello World');
 
 export default class App extends Component {
-  /* state = {
+  state = {
     counter: 0,
-    text: "",
-    usuario: { id: 0, nome: "Luís" },
-    todos: [
-      { id: 0, text: "Fazer café" },
-      { id: 0, text: "Estudar o GoNative" }
-    ]
+    text: '',
+    usuario: { id: 0, nome: 'Luís' },
+    todos: [{ id: 0, text: 'Fazer café' }, { id: 0, text: 'Estudar o GoNative' }],
   };
 
   componentDidMount() {
     setTimeout(() => {
-      this.setState({ text: "Hello World" });
+      this.setState({ text: 'Hello World' });
     }, 4000);
   }
 
@@ -34,15 +32,19 @@ export default class App extends Component {
 
   addTodo = () => {
     this.setState({
-      todos: [...this.state.todos, { id: Math.random(), text: "Novo todo" }]
+      todos: [...this.state.todos, { id: Math.random(), text: 'Novo todo' }],
     });
   };
 
   render() {
     return (
       <View style={styles.container}>
-        <Text>{`DidMount: ${this.state.text}`}</Text>
-        <Text>{this.state.usuario.nome}</Text>
+        {Platform.OS === 'ios' ? (
+          <Text>{`DidMount: ${this.state.text}`}</Text>
+        ) : (
+          <Text>{this.state.text}</Text>
+        )}
+        <Text style={styles.text}>{this.state.usuario.nome}</Text>
         {this.state.todos.map(todo => (
           <Todo key={todo.id} title={todo.text} />
         ))}
@@ -52,9 +54,9 @@ export default class App extends Component {
       </View>
     );
   }
-} */
+}
 
-  render() {
+/* render() {
     return (
       <View style={styles.container}>
         <View style={styles.box} />
@@ -68,19 +70,29 @@ export default class App extends Component {
       </View>
     );
   }
-}
+} */
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#333',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    alignContent: 'center',
+    backgroundColor: '#FFF',
+    /* flexDirection: 'row',
+    flexWrap: 'wrap', */
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    ...Platform.select({
+      ios: {
+        fontSize: 24,
+      },
+      android: {
+        fontWeight: 'bold',
+      },
+    }),
   },
 
-  box: {
+  /* box: {
     width: 80,
     height: 80,
     backgroundColor: '#F00',
@@ -90,5 +102,5 @@ const styles = StyleSheet.create({
 
   boxText: {
     color: '#FFF',
-  },
+  }, */
 });
