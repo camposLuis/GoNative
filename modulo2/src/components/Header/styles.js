@@ -5,6 +5,7 @@ import { colors, metrics } from '../../styles';
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    backgroundColor: colors.white,
     borderBottomColor: colors.light,
     borderBottomWidth: 1,
     flexDirection: 'row',
