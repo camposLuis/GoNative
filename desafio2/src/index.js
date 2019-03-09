@@ -1,22 +1,23 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import '~/config/ReactotronConfig';
+import '~/config/DevtoolsConfig';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
-
-const App = () => (
-  <View style={styles.container}>
-        <Text>Desafio 2</Text>
-      </View>
-)
+const bgContainerColor = '#F5FCFF';
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: 'center',
+    backgroundColor: bgContainerColor,
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
 });
 
-export default App; 
+const App = () => (
+  <View style={styles.container}>
+    <Text>Desafio 2</Text>
+  </View>
+);
 
-
+export default App;
