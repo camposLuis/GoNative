@@ -1,3 +1,14 @@
+# IMPORTANTE EXECUTAR O PROJETO ANTES DE REALIZAR AS CONFIGURAÇÕES ABAIXO
+
+- Ao executar e o seguinte erro aparecer:
+
+  - Unable to load script from assets 'index.android.bundle'. Make sure...
+
+- Para resolver comece criando uma pasta assets dentro da pasta android/app/src/main.
+
+- Logo após, execute o comando:
+  - react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/
+
 # CONFIGURANDO AMBIENTE DO PROJETO
 
 - yarn add eslint -D
