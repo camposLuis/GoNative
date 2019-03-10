@@ -1,23 +1,10 @@
+import React from 'react';
+
 import '~/config/ReactotronConfig';
 import '~/config/DevtoolsConfig';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
-const bgContainerColor = '#F5FCFF';
+import Routes from './routes';
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    backgroundColor: bgContainerColor,
-    flex: 1,
-    justifyContent: 'center',
-  },
-});
-
-const App = () => (
-  <View style={styles.container}>
-    <Text>Desafio 2</Text>
-  </View>
-);
+const App = () => <Routes />;
 
 export default App;
