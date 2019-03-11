@@ -4,10 +4,11 @@ import {
   View, TouchableOpacity, Text, Image,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { withNavigation } from 'react-navigation';
 
 import styles from './styles';
 
-const ListRepositories = ({ inforepository }) => (
+const ListRepositories = ({ inforepository, navigation: { navigate } }) => (
   <View style={styles.container}>
     <View style={styles.boxAvatar}>
       <Image style={styles.avatar} source={{ uri: inforepository.owner.avatar_url }} />
@@ -17,7 +18,7 @@ const ListRepositories = ({ inforepository }) => (
       <Text style={styles.login}>{inforepository.owner.login}</Text>
     </View>
     <View style={styles.boxButton}>
-      <TouchableOpacity onPress={() => {}}>
+      <TouchableOpacity onPress={() => navigate('Issues', { login: inforepository.owner.login })}>
         <Icon name="angle-right" size={18} style={styles.icon} />
       </TouchableOpacity>
     </View>
@@ -32,6 +33,9 @@ ListRepositories.propTypes = {
       login: PropTypes.string,
     }).isRequired,
   }).isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
 };
 
-export default ListRepositories;
+export default withNavigation(ListRepositories);
