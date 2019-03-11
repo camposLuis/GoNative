@@ -14,20 +14,19 @@ import {
 import api from '~/services/api';
 import Header from '~/components/Header';
 import styles from './styles';
+import ListRepository from './ListRepositories';
 
 export default class Repositories extends Component {
   state = {
-    repository: 'rocketseat/comunidade',
+    repository: '',
     loading: false,
     error: false,
     listrepos: [],
+    refresh: false,
   };
 
   async componentDidMount() {
-    console.tron.log(await AsyncStorage.getItem('@Repositorio:repository'));
-    AsyncStorage.clear();
-    const { listrepos } = this.setState;
-    console.tron.log(listrepos);
+    this.loadListRepository();
   }
 
   addRepository = async () => {
@@ -40,29 +39,29 @@ export default class Repositories extends Component {
 
       this.setState({ error: false, loading: false, listrepos: [...listrepos, data] });
       await AsyncStorage.setItem('@Repositorio:repository', JSON.stringify([...listrepos, data]));
+      this.setState({ repository: '' });
     } catch (err) {
       this.setState({ loading: false, error: true });
     }
   };
 
-  renderListItem = ({ item }) => <Text>{item.full_name}</Text>;
+  loadListRepository = async () => {
+    this.setState({ refresh: true });
+
+    const listStorage = JSON.parse(await AsyncStorage.getItem('@Repositorio:repository'));
+
+    this.setState({
+      listrepos: listStorage || [],
+      error: false,
+      loading: false,
+      refresh: false,
+    });
+  };
+
+  renderListItem = ({ item }) => <ListRepository inforepository={item} />;
 
   renderList = () => {
-    const { listrepos } = this.state;
-
-    console.tron.log(listrepos);
-
-    /*return !listrepos.length ? (
-      <Text style={styles.empty}>{listrepos.item}</Text>
-    ) : (
-      listrepos.map(item => (
-        <View key={item.id}>
-          <Text>{item.id}</Text>
-          <Text>{item.full_name}</Text>
-        </View>
-      ))
-    );
-  };*/
+    const { listrepos, refresh } = this.state;
 
     return !listrepos.length ? (
       <Text style={styles.empty}>Nenhum repositório adicionado</Text>
@@ -71,8 +70,9 @@ export default class Repositories extends Component {
         data={listrepos}
         keyExtractor={item => String(item.id)}
         renderItem={this.renderListItem}
-        onRefresh={this.loadRepositories}
+        onRefresh={this.loadListRepository}
         style={styles.listContainer}
+        refreshing={refresh}
       />
     );
   };

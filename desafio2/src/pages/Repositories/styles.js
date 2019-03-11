@@ -1,19 +1,22 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { colors, metrics } from '~/styles';
-
-const { width, height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   boxInput: {
     flex: 1,
     width: metrics.screenWidth - 80,
+    height: 60,
+    borderBottomWidth: 0.5,
+    borderColor: colors.regular,
   },
   boxButton: {
     width: 40,
-    marginLeft: metrics.baseMargin,
+    borderBottomWidth: 0.5,
+    borderColor: colors.regular,
+    height: 60,
   },
   button: {
-    alignItems: 'center',
+    alignItems: 'flex-end',
     backgroundColor: colors.lighter,
     borderRadius: metrics.borderRadius,
     height: 40,
@@ -22,7 +25,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: colors.dark,
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
   },
   container: {
@@ -30,10 +33,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.lighter,
     justifyContent: 'space-between',
     padding: metrics.basePadding,
+    paddingHorizontal: 25,
     flexDirection: 'row',
   },
   containerMaster: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.lighter,
     flex: 1,
     alignItems: 'stretch',
   },

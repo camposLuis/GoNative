@@ -11,6 +11,14 @@ import styles from './styles';
 class Header extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
+    navigation: PropTypes.shape({
+      navigate: PropTypes.func,
+    }).isRequired,
+  };
+
+  returnScreen = async () => {
+    const { navigation } = this.props;
+    navigation.navigate('Repositories');
   };
 
   render() {
@@ -19,8 +27,8 @@ class Header extends Component {
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" backgroundColor="#7A91CA" />
-        <TouchableOpacity onPress={() => {}}>
-          <Icon name="angle-left" size={16} style={styles.icon} />
+        <TouchableOpacity onPress={this.returnScreen}>
+          <Icon name="angle-left" size={18} style={styles.icon} />
         </TouchableOpacity>
         <Text style={styles.title}>{title}</Text>
         <View />
