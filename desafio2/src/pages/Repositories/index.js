@@ -35,7 +35,7 @@ export default class Repositories extends Component {
     this.setState({ loading: true });
 
     try {
-      const { data } = await api.get(`/repos/${repository}`);
+      const { data } = await api.get(`/repos/${repository}`);      
 
       this.setState({ error: false, loading: false, listrepos: [...listrepos, data] });
       await AsyncStorage.setItem('@Repositorio:repository', JSON.stringify([...listrepos, data]));
@@ -71,7 +71,6 @@ export default class Repositories extends Component {
         keyExtractor={item => String(item.id)}
         renderItem={this.renderListItem}
         onRefresh={this.loadListRepository}
-        style={styles.listContainer}
         refreshing={refresh}
       />
     );

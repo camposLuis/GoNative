@@ -18,7 +18,13 @@ const ListRepositories = ({ inforepository, navigation: { navigate } }) => (
       <Text style={styles.login}>{inforepository.owner.login}</Text>
     </View>
     <View style={styles.boxButton}>
-      <TouchableOpacity onPress={() => navigate('Issues', { login: inforepository.owner.login })}>
+      <TouchableOpacity
+        onPress={() => navigate('Issues', {
+          login: inforepository.owner.login,
+          full_name: inforepository.full_name,
+        })
+        }
+      >
         <Icon name="angle-right" size={18} style={styles.icon} />
       </TouchableOpacity>
     </View>
