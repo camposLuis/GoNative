@@ -11,6 +11,7 @@ import api from '~/services/api';
 
 import ListIssues from './ListIssues';
 import Header from '~/components/Header';
+import FilterIssues from './FilterIssues';
 
 import styles from './styles';
 
@@ -24,6 +25,7 @@ export default class Issues extends Component {
   state = {
     issues: [],
     refresh: false,
+    pressFilter: 'all',
   };
 
   componentDidMount() {
@@ -57,19 +59,21 @@ export default class Issues extends Component {
     );
   };
 
+  filterIssues = async (value) => {
+    this.setState({ pressFilter: value });
+  };
+
   render() {
     const { navigation } = this.props;
-
+    const { pressFilter } = this.state;
     const login = navigation.getParam('login');
     return (
       <View style={styles.containerMaster}>
         <StatusBar barStyle="light-content" backgroundColor="#7A91CA" />
         <Header title={login} />
+        <FilterIssues pressFilter={pressFilter} filterIssues={this.filterIssues} />
         {this.renderList()}
       </View>
     );
   }
 }
-
-// {issues.map(issue => <Text key={issue.id}>{issue.user.login}</Text>)}
-// {this.renderList()}

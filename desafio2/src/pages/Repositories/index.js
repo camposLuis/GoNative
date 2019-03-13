@@ -37,7 +37,7 @@ export default class Repositories extends Component {
     try {
       const { data } = await api.get(`/repos/${repository}`);
 
-      if (listrepos.find(repo => repo.full_name.contains('a'))) {
+      if (listrepos.find(repo => repo.full_name === repository)) {
         this.setState({ error: 'Reposítorio já adicionado.', repository: '', loading: false });
         return;
       }
