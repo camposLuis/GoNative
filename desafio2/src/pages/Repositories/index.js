@@ -20,7 +20,7 @@ export default class Repositories extends Component {
   state = {
     repository: '',
     loading: false,
-    error: false,
+    error: '',
     listrepos: [],
     refresh: false,
   };
@@ -35,13 +35,18 @@ export default class Repositories extends Component {
     this.setState({ loading: true });
 
     try {
-      const { data } = await api.get(`/repos/${repository}`);      
+      const { data } = await api.get(`/repos/${repository}`);
 
-      this.setState({ error: false, loading: false, listrepos: [...listrepos, data] });
+      if (listrepos.find(repo => repo.full_name.contains('a'))) {
+        this.setState({ error: 'Reposítorio já adicionado.', repository: '', loading: false });
+        return;
+      }
+
+      this.setState({ error: '', loading: false, listrepos: [...listrepos, data] });
       await AsyncStorage.setItem('@Repositorio:repository', JSON.stringify([...listrepos, data]));
       this.setState({ repository: '' });
     } catch (err) {
-      this.setState({ loading: false, error: true });
+      this.setState({ loading: false, error: 'Repositório não existe' });
     }
   };
 
@@ -52,7 +57,7 @@ export default class Repositories extends Component {
 
     this.setState({
       listrepos: listStorage || [],
-      error: false,
+      error: '',
       loading: false,
       refresh: false,
     });
@@ -82,7 +87,7 @@ export default class Repositories extends Component {
       <View style={styles.containerMaster}>
         <StatusBar barStyle="light-content" backgroundColor="#7A91CA" />
         <Header title="Repositórios" />
-        {error && <Text style={styles.error}>Repositório Inexistente</Text>}
+        {!!error && <Text style={styles.error}>{error}</Text>}
         <View style={styles.container}>
           <View style={styles.boxInput}>
             <TextInput
