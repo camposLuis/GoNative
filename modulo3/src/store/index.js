@@ -1,7 +1,13 @@
 import { createStore } from 'redux';
 
-function reducer() {
-  return ['Fazer café', 'Estudar React Native', 'Estudar Redux'];
+const INITIAL_STATE = ['Fazer café', 'Estudar React Native', 'Estudar Redux'];
+
+function reducer(state = INITIAL_STATE, action) {
+  if (action.type === 'ADD_TODO') {
+    return [...state, action.text];
+  }
+
+  return state;
 }
 
 const store = createStore(reducer);
