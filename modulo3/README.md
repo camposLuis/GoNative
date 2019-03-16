@@ -20,3 +20,7 @@
 # Instalando redux saga
 
 - yarn add redux-saga
+
+# Instalando reactotron redux saga
+
+- yarn add reactotron-redux-saga
