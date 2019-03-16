@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { View, Text, Button } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as Actions from './actions/todos';
+import * as Actions from './store/actions/todos';
 
 // import styles from './styles';
 
