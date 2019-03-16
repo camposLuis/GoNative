@@ -1,8 +1,20 @@
-import { createStore, compose } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 
-import reducer from './reducers';
+import rootReducer from './reducers';
+import rootSaga from './sagas';
 
-const createAppropriateStore = process.env.NODE_ENV === 'development' ? console.tron.createEnhancer : () => {};
-const store = createStore(reducer, compose(createAppropriateStore()));
+const sagaMiddleware = createSagaMiddleware();
+
+const createAppropriateStore = __DEV__ ? console.tron.createEnhancer : () => {};
+const store = createStore(
+  rootReducer,
+  compose(
+    applyMiddleware(sagaMiddleware),
+    createAppropriateStore(),
+  ),
+);
+
+sagaMiddleware.run(rootSaga);
 
 export default store;

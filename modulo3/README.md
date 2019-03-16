@@ -16,3 +16,7 @@
 # Instalando styled components
 
 - yarn add styled-components
+
+# Instalando redux saga
+
+- yarn add redux-saga
