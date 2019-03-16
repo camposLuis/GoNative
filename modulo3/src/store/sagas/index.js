@@ -4,8 +4,8 @@ import {
 import api from '../../services/api';
 import { navigate } from '../../services/navigation';
 
-import * as LoginActions from '../actions/login';
-import * as RepositoriesActions from '../actions/repositories';
+import { Creators as LoginActions, Types as LoginTypes } from '../ducks/login';
+import { Creators as RepositoriesActions, Types as RepositoriesTypes } from '../ducks/repositories';
 
 function* login(action) {
   try {
@@ -35,7 +35,7 @@ function* loadRepositories() {
 
 export default function* rootSaga() {
   return yield all([
-    takeLatest('LOGIN_REQUEST', login),
-    takeLatest('LOAD_REPOSITORIES_REQUEST', loadRepositories),
+    takeLatest(LoginTypes.REQUEST, login),
+    takeLatest(RepositoriesTypes.REQUEST, loadRepositories),
   ]);
 }
