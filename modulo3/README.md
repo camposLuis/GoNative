@@ -12,3 +12,7 @@
   - react-native link react-native-gesture-handler
 - Após realizar os passos acima realizar a configuração existente no seguinte link:
   - https://kmagiera.github.io/react-native-gesture-handler/docs/getting-started.html
+
+# Instalando styled components
+
+- yarn add styled-components
