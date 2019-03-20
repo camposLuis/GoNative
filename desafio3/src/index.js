@@ -1,6 +1,14 @@
 import React from 'react';
-import Map from './mapbox';
+import { Provider } from 'react-redux';
+import './config/ReactotronConfig';
 
-const App = () => <Map />;
+import Map from './pages/Map';
+import store from './store';
+
+const App = () => (
+  <Provider store={store}>
+    <Map />
+  </Provider>
+);
 
 export default App;
